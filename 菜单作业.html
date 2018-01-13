@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单事件</title>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <script src="js/vue2.min.js"></script>
+</head>
+<body>
+    <div id="box">
+        <div >
+            <ul>
+                <li v-for="value in menu"><button type="button"></button></li>
+            </ul>
+        </div>
+        <div></div>
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#box",
+        data:{
+            type:"首页",
+            menu:[
+                {
+                    name:"首页",
+                    content:"首页内容就是我"
+                },
+                {
+                    name:"菜单一",
+                    content:"菜单二内容写这里"
+                },
+                {
+                    name:"菜单三",
+                    content:"菜单三内容写这里"
+                },
+                {
+                    name;"菜单四",
+                    content:"菜单四内容写这里"
+                }
+            ]
+        },
+        methods:{
+            myclick:function(value){
+                this.type=value;
+            }
+        }
+    })
+</script>
