@@ -2,12 +2,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>无标题文档</title>
+<title>获取新闻列表</title>
 
 <script>
-
 window.onload = function() {
-	var oBtn = document.getElementById('btn');
+	var Btn = document.getElementById('btn');
+    var Ul = document.getElementById('ul');
 	oBtn.onclick = function() {
 		var xhr = null;
 		try {
@@ -25,12 +25,12 @@ window.onload = function() {
 				if ( xhr.status == 200 ) {
 					var data = JSON.parse( xhr.responseText );
 					
-					var oUl = document.getElementById('ul1');
+					
 					var html = '';
 					for (var i=0; i<data.length; i++) {
 						html += '<li><a href="">'+data[i].title+'</a> [<span>'+data[i].date+'</span>]</li>';
 					}
-					oUl.innerHTML = html;
+					Ul.innerHTML = html;
 				} else {
 					alert('出错了' + xhr.status);
 				}
@@ -44,6 +44,6 @@ window.onload = function() {
 </head>
 <body>
 	<input type="button" value="按钮" id="btn" />
-    <ul id="ul1"></ul>
+    <ul id="ul"></ul>
 </body>
 </html>

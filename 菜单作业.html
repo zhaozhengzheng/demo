@@ -5,15 +5,42 @@
     <title>菜单事件</title>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <script src="js/vue2.min.js"></script>
+    
+    <style>
+        #box{
+            width: 60%;margin: auto;height: 350px;margin-top: 100px;background-color: pink;
+        }
+        ul{
+            margin: 0px;padding: 0px;list-style: none;text-align: center;
+        }
+        button{
+            width: 100%;padding: 8px;
+        }
+        p{
+            margin: 0px;padding: 8px;
+        }
+        .bule{
+            background-color: blueviolet;
+        }
+        .wheat{
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
     <div id="box">
-        <div >
-            <ul>
-                <li v-for="value in menu"><button type="button"></button></li>
+        <div style="width: 30%;margin: auto;height: 350px;float: left;">
+            <ul >
+                <li v-for="value in menu"><button type="button" :class="type==value.name?'btn-primary':'btn'" @click="myclick(value.name)" style="margin-top: 8px;">{{value.name}}</button></li>
             </ul>
         </div>
-        <div></div>
+        <div style="width: 70%;background-color:wheat;margin: auto;height: 350px;float: right;" v-for="value in menu" v-if="type==value.name">
+            <span style="width: 100%;color: blue" v-if="type!='首页'">首页</span>
+            <span style="width:100%;color: blue;">{{value.name}}</span>
+            
+            <p style="width: 100%;" :class="type=='首页'?'blue':'wheat'">{{value.name}}</p>
+            <p class="h1">{{value.content}}</p>
+        </div>
     </div>
 </body>
 </html>
@@ -36,12 +63,13 @@
                     content:"菜单三内容写这里"
                 },
                 {
-                    name;"菜单四",
+                    name:"菜单四",
                     content:"菜单四内容写这里"
                 }
             ]
         },
         methods:{
+            
             myclick:function(value){
                 this.type=value;
             }
